@@ -1,0 +1,84 @@
+d={}
+def add_expense():
+    date=input("Enter the date (DD/MM/YYYY): ")
+    cat=input("Enter the category: ")
+    amount=float(input("Enter the amount: "))
+    print(' ')
+    d.update({date:[cat,amount]})
+    return
+def show_expenses():
+    def sort_by_cat(cat):
+        count=0
+        sum=0
+        for keys,values in d.items():
+            if values[0]==cat:
+                count+=1
+                sum+=values[1]
+        if count==0:
+            print("Categorynot found !")
+        else:
+            print("Total expense for",cat,"is",sum)
+            return
+    def sort_by_date(date):
+        count=0
+        for keys,values in d.items():
+            if keys==str(date):
+                count+=1
+        if count==0:
+            print("Date not found !")
+        else:
+            for keys,values in d.items():
+                if keys==str(date):
+                    print(values[0],'-',values[1])
+        return
+    def show_all_details():
+        if d=={}:
+            print("No records Found! ")
+        else:
+            for keys,values in d.items():
+                print(values[0],'-',values[1],'on',keys)
+        return
+    print("--Select the below options--")
+    print("--A. Sort by date--")
+    print("--B. Sort by category--")
+    print("--C. Show all details--")
+    print(' ')
+    while(1):
+        choice=input("Enter your choice: ")
+        print(' ')
+        if choice=="A" or choice=="a":
+            date=input("Enter the date")
+            sort_by_date(date)
+            break
+        elif choice=='B' or choice=="b":
+            cat=input("Enter the category: ")
+            sort_by_cat(cat)
+            break
+        elif choice=='C' or choice=="c":
+            show_all_details()
+            break
+        else:
+            print("Invalid choice !")
+            break
+    return
+def main():
+    print("***Expense Tracker***")
+    print("--Select the below options--")
+    print("1. Add expense ")
+    print("2. Show expenses ")
+    print("3. Exit")
+    print(' ')
+    while(1):
+        selection=int(input("Enter the selection: "))
+        print(' ')
+        if selection==1:
+            add_expense()
+        elif selection==2:
+            show_expenses()
+        elif selection==3:
+            print("Exited successfully.")
+            break
+        else:
+            print("Invalid selection. Please, try again")
+main()
+
