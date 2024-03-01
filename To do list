@@ -1,0 +1,68 @@
+d={}
+def add_task(task):
+    if task not in d.keys():
+        d.update({task:'Pending'})
+        print("Task","'",task,"'","added successfully")
+        print(' ')
+    else:
+        print("Task already exists ")
+        print(' ')
+def delete_task(task):
+    if task in d.keys():
+        del d[task]
+        print("Task","'",task,"'","deleted successfully")
+        print(' ')
+    else:
+        print("Task doesn't exists ")
+        print(' ')
+def display_tasks():
+    if d!={}:
+        print("Tasks: ")
+        i=len(d)
+        for keys,values in d.items():
+            print(i,".",keys,'-',values)
+            i+=1
+    else:
+        print("No tasks are here to display,Press 1 to add task ")
+        print(' ')
+def mark_complete(task):
+    if task in d.keys():
+        d.update({task:'completed'})
+        print("Task","'",task,"'","is completed")
+        print(' ')
+    else:
+        print("Task","'",task,"'","is not available")
+        print(' ')
+def main():
+    while(1):
+        print("== To-do Application ==\n")
+        print("1.Add the Task")
+        print("2.Delete the Task")
+        print("3.Display the Task")
+        print("4.Mark as complete for the Task")
+        print("5.Exit\n")
+        choice=int(input("Enter your option (1-5): "))
+        print(' ')
+        if choice==1:
+            task=input("Enter the task to add:")
+            print(' ')
+            add_task(task)
+        elif choice==2:
+            task=input("Enter the task to delete:")
+            print(' ')
+            delete_task(task)
+        elif choice==3:
+            display_tasks()
+        elif choice==4:
+            task=input("Enter the task to mark as complete")
+            mark_complete(task)
+        elif choice==5:
+            print("Exited Successfully")
+            break
+        else:
+            print("You have entered invalid option.Please, Enter valid option")
+if __name__=="__main__":
+    main()
+        
+    
+               
