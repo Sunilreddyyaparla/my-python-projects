@@ -80,5 +80,6 @@ def main():
             break
         else:
             print("Invalid selection. Please, try again")
-main()
+if __name__=="__main__":
+    main()
 
